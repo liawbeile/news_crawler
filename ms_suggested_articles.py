@@ -11,6 +11,10 @@ latest_news = ms_soup.find('div', id='latest-news')
 
 #for all latest news, go into its article URL link and retrieve all suggested posts at the bottom
 for article in latest_news.find_all("div", class_="ind-article"):
+    for headlines in article.find_all("div", class_="header"):
+        print("\n")
+        print("Suggested articles for article titled: " + headlines.find('h1').text)
+        print('--------')
     for link in article.find_all('a'):
         article_page=req.get(link.get('href'))
         ms_art_soup = BeautifulSoup(article_page.text, 'html.parser')
