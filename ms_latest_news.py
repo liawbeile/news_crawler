@@ -9,6 +9,7 @@ ms_soup = BeautifulSoup(ms_page.text, 'html.parser')
 
 latest_news = ms_soup.find('div', id='latest-news')
 
+# Retrieve latest news articles' URL links, titles and subtitles
 for article in latest_news.find_all("div", class_="ind-article"):
     for link in article.find_all('a'):
         print(link.get('href'))

@@ -13,5 +13,3 @@ for article in ms_soup.find_all("div", class_="header"):
     print(article.find('h1').text)
     print(article.find('p').text)
     print('-------------')
-
-
