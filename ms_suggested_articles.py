@@ -10,7 +10,7 @@ ms_soup = BeautifulSoup(ms_page.text, 'html.parser')
 latest_news = ms_soup.find('div', id='latest-news')
 
 # Retrieve latest news articles' titles and captions
-def title_of_news(article):
+def print_headline_and_subtitle(article):
     for headlines in article.find_all("div", class_="header"):
         print(headlines.find('h1').text)
         print(headlines.find('p').text)
@@ -26,7 +26,7 @@ def suggested_posts_of_latest_news(article):
                 for related_art_link in related_article.find_all('a'):
                     print(related_art_link.get('href'))
                 for related_post in related_article.find_all("div", class_="container loaded-post-container"): #print the header and caption of the related articles
-                    title_of_news(related_post)
+                    print_headline_and_subtitle(related_post)
                     print('--------')
 
 # For all latest news articles, request its article URL link and retrieve all suggested posts at the bottom of the article page
@@ -35,10 +35,11 @@ def main(latest_news):
         print("\n\n")
         print("Latest news: ")
         print('--------')
-        title_of_news(article)
+        print_headline_and_subtitle(article)
         print('--------')
         print("\n")
         print("Suggested articles for latest news article: ")
+        print('--------')
         suggested_posts_of_latest_news(article)
         
 main(latest_news)
