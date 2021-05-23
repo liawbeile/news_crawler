@@ -9,6 +9,7 @@ ms_soup = BeautifulSoup(ms_page.text, 'html.parser')
 for headline in ms_soup.find_all('h1'):
     print(headline.text)
 
+# Retrieve news articles' titles and subtitles
 for article in ms_soup.find_all("div", class_="header"):
     print(article.find('h1').text)
     print(article.find('p').text)
